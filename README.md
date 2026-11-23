@@ -4,8 +4,6 @@ An adaptive two-road traffic light controller written in **HCS12 Assembly** for 
 
 The controller uses two potentiometers to represent traffic density, adjusts green-light durations, handles an emergency request for Road A, and provides pedestrian crossings with an audible signal. An LCD displays road states and countdowns. A congestion alert is also implemented.
 
-Developed for **COE324 - Microprocessors Lab, Fall 2026**, at the Lebanese American University.
-
 ## Features
 
 - Adaptive green-light timing based on 8-bit ADC readings.
@@ -145,23 +143,9 @@ MCCNT underflows every 0.5 seconds. Its interrupt service routine combines two t
 
 The source uses absolute assembly, with program code starting at `$4000` and explicit MCCNT, IRQ and reset vectors.
 
-## Build and run in CodeWarrior
-
-1. Open the project's CodeWarrior project file if the complete project is included in the repository.
-2. If starting from the Assembly source only, create an **HCS12 absolute Assembly project** targeting the **MC9S12DT256** in CodeWarrior for HC12.
-3. Use the project's supplied `derivative.inc` and confirm that the target, memory configuration and interrupt-vector handling match the board. The source depends on `RAMStart`, `RAMEnd` and the device register definitions.
-4. Add the Assembly source as the application's main source file. Avoid including another startup source that defines the same entry points or vectors.
-5. Verify the board's 2 MHz bus-clock configuration and connect the hardware according to the connection table.
-6. Build the project using CodeWarrior's **Make/Build** command.
-7. Select the board's supported programming/debug connection and download the program.
-8. Run the program and confirm that the five-second startup message appears.
-9. Vary the potentiometers and exercise the emergency and pedestrian controls.
-
-The standalone Assembly file requires the matching CodeWarrior project configuration and board support files to build and run.
-
 ## Hardware demonstration checklist
 
-The project has been reported as working on the training board. The following checks document its principal demonstrations:
+The following checks document its principal demonstrations:
 
 - Set Road A density above Road B and observe Road A priority.
 - Reverse the density values and observe Road B priority.
